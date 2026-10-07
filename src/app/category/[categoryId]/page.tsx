@@ -1,4 +1,5 @@
 import NewsCards from "@/components/NewsCards";
+import { notFound } from "next/navigation";
 
 
 interface INewsItem {
@@ -21,6 +22,10 @@ const CategoryNews = async({params}:ICategoryParams) => {
   const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`)
   const data = await res.json();
   const categoryNews:INewsItem[] = data.data;
+
+  if(!categoryNews){
+      notFound()
+    }
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 interface INewsPageProps {
   params: Promise<{
@@ -12,7 +13,10 @@ const NewsPage = async ({ params }: INewsPageProps) => {
   const res = await fetch(`https://news-api-v2.vercel.app/api/article/${newsId}`);
   const data = await res.json();
   const news = data.data;
- console.log(news);
+
+  if(!news){
+    notFound()
+  }
  
   return (
     <div className="max-w-7xl mx-auto py-5">

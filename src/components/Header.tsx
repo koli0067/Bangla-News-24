@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Navlink from './Navlink'
+import Userinfo from './Userinfo'
 
 const Header = () => {
   // Server-side বাংলা তারিখ জেনারেট করা হচ্ছে
@@ -9,16 +10,11 @@ const Header = () => {
 
   return (
     <header className="container max-w-7xl mx-auto px-4 py-3 md:py-4">
-      {/* 
-        - Mobile: flex-col (স্ট্যাক হয়ে নিচে নিচে আসবে)
-        - Tablet/Desktop (md): flex-row (এক সারিতে আসবে) 
-      */}
+     
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4 md:mb-5">
         
-        {/* ডেস্কটপে সেন্টার অলাইনমেন্টের জন্য Spacer, মোবাইলে হিডেন */}
         <div className="hidden md:block w-32" />
 
-        {/* Branding & Logo */}
         <div className="flex items-center gap-3 text-center md:text-left">
           <Image 
             src="/logo.webp" 
@@ -39,15 +35,7 @@ const Header = () => {
         </div>
 
         {/* Auth Actions */}
-        <div className="flex items-center gap-2">
-          <button type="button" className="btn text-[15px] sm:text-[18px] px-3 sm:px-4 py-1.5 sm:py-2">
-            সাইন ইন
-          </button>
-          <button type="button" className="btn bg-[#9F0712] text-white text-[15px] sm:text-[18px] px-3 sm:px-4 py-1.5 sm:py-2">
-            সাইন আপ
-          </button>
-        </div>
-
+        <Userinfo></Userinfo>
       </div>
 
       <Navlink />
